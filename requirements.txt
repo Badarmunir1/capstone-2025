@@ -5,5 +5,5 @@ matplotlib
 tensorflow
 pillow
 streamlit
-gradio  # optional alternative
+gradio 
 keras
