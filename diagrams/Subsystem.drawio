@@ -1,0 +1,138 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.6">
+  <diagram name="Page-1" id="F8Rh8c83XIhyc_ZSbNkP">
+    <mxGraphModel dx="1965" dy="2128" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="layer" />
+        <mxCell id="ui_module" parent="2" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=11;" value="&#xa;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;ImageUploadHandler&lt;/span&gt;&#xa;&#xa;" vertex="1">
+          <mxGeometry height="208" width="360" x="420" y="-100" as="geometry" />
+        </mxCell>
+        <mxCell id="ui_row1" parent="ui_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="ImageUploadHandler" vertex="1">
+          <mxGeometry height="34.141414141414145" width="340" x="10" y="39.3939393939394" as="geometry" />
+        </mxCell>
+        <mxCell id="ui_row2" parent="ui_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="PreferenceManager" vertex="1">
+          <mxGeometry height="34.141414141414145" width="340" x="10" y="73.53535353535354" as="geometry" />
+        </mxCell>
+        <mxCell id="ui_row3" parent="ui_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="ResultViewer" vertex="1">
+          <mxGeometry height="34.141414141414145" width="340" x="10" y="107.67676767676768" as="geometry" />
+        </mxCell>
+        <mxCell id="ba8Jbfpc1VMkaZxFkzKd-4" parent="ui_module" style="text;html=1;fontSize=12" value="&lt;b&gt;User Interface Module&lt;/b&gt;" vertex="1">
+          <mxGeometry height="42.02020202020202" width="260" x="10" y="10.505050505050505" as="geometry" />
+        </mxCell>
+        <mxCell id="app_module" parent="2" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2" value="Application / Controller Module" vertex="1">
+          <mxGeometry height="140" width="480" x="360" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="app_row1" parent="app_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="ImageController" vertex="1">
+          <mxGeometry height="30" width="456" x="12" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="app_row2" parent="app_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="UserController" vertex="1">
+          <mxGeometry height="30" width="456" x="12" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="app_row3" parent="app_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="RecommendationController" vertex="1">
+          <mxGeometry height="30" width="456" x="12" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ba8Jbfpc1VMkaZxFkzKd-14" parent="app_module" style="text;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;b&gt;Application / Controller module&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="160" x="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rec_module" parent="2" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2" value="Recommendation Engine Module" vertex="1">
+          <mxGeometry height="160" width="300" x="40" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="rec_row1" parent="rec_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="RuleBased Mapper" vertex="1">
+          <mxGeometry height="34" width="280" x="10" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="rec_row2" parent="rec_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="SuggestionGenerator" vertex="1">
+          <mxGeometry height="34" width="280" x="10" y="68" as="geometry" />
+        </mxCell>
+        <mxCell id="ba8Jbfpc1VMkaZxFkzKd-16" parent="rec_module" style="text;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;b&gt;Recomendation engine module&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="160" x="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ml_module" parent="2" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2" value="Machine Learning / Image&#xa;Processing Module" vertex="1">
+          <mxGeometry height="180" width="320" x="980" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="ml_row1" parent="ml_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="StyleClassifier" vertex="1">
+          <mxGeometry height="36" width="296" x="12" y="34" as="geometry" />
+        </mxCell>
+        <mxCell id="ml_row2" parent="ml_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="ColorExtractor" vertex="1">
+          <mxGeometry height="36" width="296" x="12" y="72" as="geometry" />
+        </mxCell>
+        <mxCell id="ml_row3" parent="ml_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="FeatureAnalyzer" vertex="1">
+          <mxGeometry height="36" width="296" x="12" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="ba8Jbfpc1VMkaZxFkzKd-15" parent="ml_module" style="text;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;b&gt;Machine Learning / Image Processing Module&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="160" x="40" as="geometry" />
+        </mxCell>
+        <mxCell id="db_module" parent="2" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2" value="" vertex="1">
+          <mxGeometry height="170" width="680" x="360" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="db_left" parent="db_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="UsersVoirt&#xa;ImageRepository&#xa;CloudRepayer" vertex="1">
+          <mxGeometry height="124" width="320" x="16" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="db_right" parent="db_module" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1" value="ImageRepository&#xa;RecommendationRepository&#xa;CloudStorageManager" vertex="1">
+          <mxGeometry height="124" width="308" x="356" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="ba8Jbfpc1VMkaZxFkzKd-19" parent="db_module" style="text;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;b&gt;Database /Storage&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="170" x="60" as="geometry" />
+        </mxCell>
+        <mxCell id="label_ui_to_app" parent="2" style="text;html=1;fontSize=12" value="sends user inputs &amp;&#xa;receives recommendations" vertex="1">
+          <mxGeometry height="40" width="260" x="610" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="label_left_forward" parent="2" style="text;html=1;fontSize=12" value="forwards images&#xa;&amp; inputs" vertex="1">
+          <mxGeometry height="40" width="140" x="180" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="label_right_ml" parent="2" style="text;html=1;fontSize=12" value="ML results" vertex="1">
+          <mxGeometry height="20" width="120" x="880" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="label_db_store_right" parent="2" style="text;html=1;fontSize=12" value="stores&#xa;recommendations" vertex="1">
+          <mxGeometry height="40" width="140" x="940" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="label_db_store_left" parent="2" style="text;html=1;fontSize=12" value="stores user data, images, history" vertex="1">
+          <mxGeometry height="40" width="220" x="230" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_ui_app" edge="1" parent="2" source="ui_module" style="endArrow=none;strokeWidth=2" target="app_module">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="600" y="150" as="sourcePoint" />
+            <mxPoint x="600" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_app_rec" edge="1" parent="2" source="app_module" style="endArrow=block;strokeWidth=2" target="rec_module">
+          <mxGeometry x="600" y="350" as="geometry">
+            <mxPoint x="230" y="440" as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_app_ml" edge="1" parent="2" source="app_module" style="endArrow=block;strokeWidth=2" target="ml_module">
+          <mxGeometry x="600" y="350" as="geometry">
+            <mxPoint x="1100" y="420" as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_app_db" edge="1" parent="2" source="app_module" style="endArrow=block;strokeWidth=2">
+          <mxGeometry x="600" y="330" as="geometry">
+            <mxPoint x="600" y="640" as="points" />
+            <mxPoint x="680" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_rec_db" edge="1" parent="2" source="rec_module" style="endArrow=block;strokeWidth=2" target="db_module">
+          <mxGeometry x="200" y="450" as="geometry">
+            <mxPoint x="420" y="690" as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_ml_db" edge="1" parent="2" source="ml_module" style="endArrow=block;strokeWidth=2" target="db_module">
+          <mxGeometry x="1160" y="460" as="geometry">
+            <mxPoint x="1000" y="720" as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_label_left_app" edge="1" parent="2" source="label_left_forward" style="endArrow=block;strokeWidth=2" target="app_module">
+          <mxGeometry x="160" y="280" as="geometry">
+            <mxPoint x="420" y="260" as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_app_label_right" edge="1" parent="2" source="app_module" style="endArrow=none;strokeWidth=2" target="label_right_ml">
+          <mxGeometry x="840" y="280" as="geometry">
+            <mxPoint x="900" y="280" as="points" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

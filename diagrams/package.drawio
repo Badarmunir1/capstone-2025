@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.7">
+  <diagram name="Page-1" id="twP2FcZZbPT75x-Q9s4y">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1300" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="s" parent="1" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1">
+          <mxGeometry height="20" width="20" x="40" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="idle" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cfefff;strokeColor=#2b7bb9;align=center;verticalAlign=middle;" value="Idle / Logged Out" vertex="1">
+          <mxGeometry height="50" width="180" x="90" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="login" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;verticalAlign=middle;" value="User Login" vertex="1">
+          <mxGeometry height="50" width="160" x="140" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="ready" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5d5;strokeColor=#6aa84f;align=center;verticalAlign=middle;" value="Logged In / Ready" vertex="1">
+          <mxGeometry height="60" width="200" x="330" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="upload" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6b3;strokeColor=#e69138;align=center;verticalAlign=middle;" value="Image Uploading" vertex="1">
+          <mxGeometry height="60" width="180" x="140" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="ml" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6ddff;strokeColor=#8e7cc3;align=center;verticalAlign=middle;" value="ML Processing Image" vertex="1">
+          <mxGeometry height="60" width="200" x="360" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="gen" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6ddff;strokeColor=#8e7cc3;align=center;verticalAlign=middle;" value="Generating Recommendations" vertex="1">
+          <mxGeometry height="60" width="260" x="300" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="disp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f5d5;strokeColor=#6aa84f;align=center;verticalAlign=middle;" value="Displaying Results" vertex="1">
+          <mxGeometry height="60" width="200" x="600" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="logout" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;verticalAlign=middle;" value="Logout / Session End" vertex="1">
+          <mxGeometry height="70" width="240" x="600" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="e" parent="1" style="ellipse;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1">
+          <mxGeometry height="20" width="20" x="860" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" edge="1" parent="1" source="s" style="endArrow=block;" target="idle">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="1" source="idle" style="endArrow=block;" target="login" value="Enter credentials">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" edge="1" parent="1" source="login" style="endArrow=block;" target="idle" value="Invalid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" edge="1" parent="1" source="login" style="endArrow=block;" target="ready" value="Success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" edge="1" parent="1" source="ready" style="endArrow=block;" target="upload" value="Upload image">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" edge="1" parent="1" source="upload" style="endArrow=block;" target="ml" value="Processing">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" edge="1" parent="1" source="ml" style="endArrow=block;" target="gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" edge="1" parent="1" source="gen" style="endArrow=block;" target="disp" value="Generated">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" edge="1" parent="1" source="disp" style="endArrow=block;" target="gen" value="Modify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" edge="1" parent="1" source="disp" style="endArrow=block;" target="logout" value="Logout">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a11" edge="1" parent="1" source="logout" style="endArrow=block;" target="e">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.7">
+  <diagram name="Page-1" id="HeBgv9X7MSGrdYoO3IBO">
+    <mxGraphModel dx="786" dy="451" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ui" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" value="&lt;&lt;component&gt;&gt;&#xa;User Interface (Frontend)&#xa;&#xa;• IUnsuit&#xa;• DesignOutput" vertex="1">
+          <mxGeometry height="120" width="260" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" value="&lt;&lt;component&gt;&gt;&#xa;Web Server / API Layer&#xa;&#xa;• IUadaraService&#xa;• ImageProcessingService" vertex="1">
+          <mxGeometry height="140" width="300" x="380" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rec" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" value="&lt;&lt;component&gt;&gt;&#xa;Recommendation&#xa;&#xa;• IUadaraService&#xa;• IRecommendationEngine" vertex="1">
+          <mxGeometry height="140" width="300" x="760" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ml" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" value="&lt;&lt;component&gt;&gt;&#xa;Machine Learning Component&#xa;&#xa;• IPredictStyle" vertex="1">
+          <mxGeometry height="120" width="300" x="380" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="engine" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" value="&lt;&lt;component&gt;&gt;&#xa;Recommendation Engine&#xa;&#xa;• IPredictStyle&#xa;• IGenerateSuggestions" vertex="1">
+          <mxGeometry height="140" width="320" x="760" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" value="&lt;&lt;component&gt;&gt;&#xa;Database&#xa;&#xa;• IUadara Repository&#xa;• Image Repository" vertex="1">
+          <mxGeometry height="140" width="300" x="40" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="cloud" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" value="&lt;&lt;component&gt;&gt;&#xa;Cloud Storage&#xa;&#xa;• IUadara Repository&#xa;• Storage Service" vertex="1">
+          <mxGeometry height="140" width="320" x="420" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="ui" style="endArrow=block;html=1" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="api" style="endArrow=block;html=1" target="rec">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="api" style="endArrow=block;html=1" target="ml">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="ml" style="endArrow=block;html=1" target="engine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="engine" style="endArrow=block;html=1" target="cloud">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="db" style="endArrow=block;html=1" target="cloud">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
