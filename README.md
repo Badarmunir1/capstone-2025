@@ -28,6 +28,28 @@ Interior Design Advisor (IDA) is an intelligent system that takes a photo of any
 - **Notebooks**: Jupyter
 - **Future UI**: Streamlit
 
+  ## 📄 Documentation
+
+- [SRS Document](docs/IDA_SRS.pdf)
+- [Design Document](docs/IDA_Design_Document.pdf)
+- [Proposal](docs/IDA_Proposal.pdf)
+- [Architecture Diagram](docs/IDA_Architecture_Diagram.pdf)
+- [Signed SRS](docs/IDA_SRS_Signed.pdf)
+- [Presentation](docs/IDA_Presentation.pdf)
+- [10 Week Report](docs/10_week_report.pdf)
+- [Weekly Report 24 Nov](docs/Weekly_Report_24_Nov.pdf)
+
+## 🖼 Diagrams
+
+View and edit in [draw.io](https://app.diagrams.net/):  
+- [Component Diagram](diagrams/component.drawio)  
+- [Deployment Diagram](diagrams/deployment.drawio)  
+- [ERD](diagrams/erd.drawio)  
+- [Package Diagram](diagrams/package.drawio)  
+- [Physical Data Model](diagrams/physical%20data%20model.drawio)  
+- [State Transition](diagrams/state%20transition.drawio)  
+- [Subsystem Diagram](diagrams/Subsystem.drawio)
+
 ## 📁 Project Structure
 
 ```bash
@@ -41,3 +63,4 @@ capstone-2025/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+
