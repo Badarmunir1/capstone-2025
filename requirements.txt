@@ -4,3 +4,6 @@ scikit-learn
 matplotlib
 tensorflow
 pillow
+streamlit
+gradio  # optional alternative
+keras
