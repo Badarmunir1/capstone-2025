@@ -24,7 +24,7 @@ def load_models():
     # Load your trained model (from Day 1 integration)
     # Assume saved as models/mobilenetv2_indoor.h5 - adjust path if needed
     try:
-        custom_model = load_model('models/mobilenetv2_indoor.h5')
+        custom_model = load_model('../models/mobilenetv2_indoor.h5')
     except:
         st.warning("Custom model not found - using base MobileNetV2")
         custom_model = None
