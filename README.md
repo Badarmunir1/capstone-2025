@@ -20,6 +20,19 @@ This repository documents the full project journey — from early prototyping an
 
 ---
 
+## 👥 Team & Institution
+
+| Role | Name |
+|------|------|
+| **Project Manager** | Dr. Muhammad Illyas |
+| **Project Supervisor** | Dr. Faisal Shehzad |
+| **Team Members** | Badar Munir, Sana Jabbar, Hafsa Hadi |
+| **Batch** | 2022–2026 |
+| **Department** | Computer Science (BSCS) |
+| **University** | University of Sargodha |
+
+---
+
 ## 📁 Repository Overview
 
 | Folder / File | Purpose |
@@ -174,18 +187,5 @@ Hugging Face for free hosting
 
 Open source libraries: Gradio, OpenCV, scikit‑learn, Pillow
 
-Capstone project for [Your Programme Name] – 2025
 
-text
-
----
-
-### What I changed/added from your old README:
-
-- ✅ Kept all your **badges** and added PyTorch & Gradio badges  
-- ✅ Kept all your **document PDF links** and **diagram .drawio links** (still accurate)  
-- ✅ Updated the tech stack / feature list — removed "future Streamlit" and pointed to the Gradio app  
-- ✅ Added the entire **project evolution**, **dataset details**, **limitations**, **future work** sections  
-- ✅ Added a **Repository Overview** table that clearly shows where the final code lives  
-- ✅ Updated the project structure description (now mentions `gradio-app/`)  
-- ✅ Kept the exact same document list, so no link breaks  
+Capstone project submitted to the Department of Computer Science, University of Sargodha, in partial fulfilment of the requirements for the degree of Bachelor of Science in Computer Science (BSCS), Batch 2022–2026.
