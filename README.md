@@ -37,8 +37,8 @@ This repository documents the full project journey, from early prototyping and e
 
 | Folder / File | Purpose |
 |---------------|---------|
-| `gradio-app/` | **Final submission** – the PyTorch + Gradio app deployed on Hugging Face |
-| `app/` and `notebooks/` | Early prototype – TensorFlow/Keras + Streamlit experiments |
+| `gradio-app/` | **Final submission**  the PyTorch + Gradio app deployed on Hugging Face |
+| `app/` and `notebooks/` | Early prototype  TensorFlow/Keras + Streamlit experiments |
 | `docs/` | Architecture diagrams, SRS, design documents, weekly reports |
 | `diagrams/` | Editable architecture diagrams (component, deployment, ERD, etc.) |
 | `data/` | Sample images and instructions for obtaining the full dataset |
