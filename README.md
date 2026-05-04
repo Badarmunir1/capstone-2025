@@ -16,7 +16,7 @@
 
 Interior Design Advisor (IDA) takes a photo of any room and instantly provides **personalized design insights**: a detected interior style (Modern, Minimalist, Rustic, Classic), a 5‑color palette extracted from the image, and tailored furniture, layout & lighting recommendations.
 
-This repository documents the full project journey — from early prototyping and experimentation to the final deployed application.
+This repository documents the full project journey, from early prototyping and experimentation to the final deployed application.
 
 ---
 
@@ -141,44 +141,33 @@ Integrate a feedback loop (thumbs up/down) to continuously improve the model.
 
 Optimise model for edge deployment (ONNX / TensorRT) to run on low‑power devices.
 
-📄 Documentation
-SRS Document
+## 📄 Documentation
 
-Design Document
+- [SRS Document](docs/IDA_SRS.pdf)
+- [Design Document](docs/IDA_Design_Document.pdf)
+- [Proposal](docs/IDA_Proposal.pdf)
+- [Architecture Diagram](docs/IDA_Architecture_Diagram.pdf)
+- [Signed SRS](docs/IDA_SRS_Signed.pdf)
+- [Presentation](docs/IDA_Presentation.pdf)
+- [10 Week Report](docs/10_week_report.pdf)
+- [Weekly Report 24 Nov](docs/Weekly_Report_24_Nov.pdf)
 
-Proposal
+## 🖼 Diagrams (Editable)
 
-Architecture Diagram
+View and edit in [draw.io](https://app.diagrams.net/):
 
-Signed SRS
+- [Component Diagram](diagrams/component.drawio)
+- [Deployment Diagram](diagrams/deployment.drawio)
+- [ERD](diagrams/erd.drawio)
+- [Package Diagram](diagrams/package.drawio)
+- [Physical Data Model](diagrams/physical%20data%20model.drawio)
+- [State Transition](diagrams/state%20transition.drawio)
+- [Subsystem Diagram](diagrams/Subsystem.drawio)
 
-Presentation
+## 📎 Links
 
-10 Week Report
-
-Weekly Report 24 Nov
-
-🖼 Diagrams (Editable)
-View and edit in draw.io:
-
-Component Diagram
-
-Deployment Diagram
-
-ERD
-
-Package Diagram
-
-Physical Data Model
-
-State Transition
-
-Subsystem Diagram
-
-📎 Links
-Live App: Hugging Face Space
-
-GitHub Repo: capstone-2025
+- **Live App:** [Hugging Face Space](https://huggingface.co/spaces/AbnormalCreation/interior-design-advisor)
+- **GitHub Repo:** [capstone-2025](https://github.com/Badarmunir1/capstone-2025)
 
 🏆 Acknowledgements
 Pre‑trained MobileNetV2 from PyTorch Image Models (TIMM) and TensorFlow/Keras
