@@ -86,7 +86,7 @@ pip install -r requirements.txt
 
 # Run the app
 python app.py
-```
+
 
 Open `http://localhost:7860` in your browser.
 
