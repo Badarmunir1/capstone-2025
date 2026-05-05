@@ -51,8 +51,6 @@ Try it now on Hugging Face Spaces:
    - Layout advice
    - Lighting tips
 
-![Demo screenshot](demo.png) <!-- optional: replace with actual screenshot -->
-
 ---
 
 ## 🛠️ Technologies Used
@@ -109,7 +107,7 @@ For detailed training steps, see the Colab notebook (link if available).
 
 - **Badar Munir** (Group Leader)  
 - **Sana Jabbar**  
-- **Hafsa Zain**  
+- **Hafsa Hadi**  
 
 **Project Advisor**: Dr. Faisal Shahzad  
 **Project Manager**: Dr. Muhammad Illyas  
