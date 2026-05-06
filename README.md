@@ -7,16 +7,25 @@
 ![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
 ![Gradio](https://img.shields.io/badge/Gradio-FF7C00?style=for-the-badge&logo=gradio&logoColor=white)
+![YOLOv8](https://img.shields.io/badge/YOLOv8-00FFFF?style=for-the-badge&logo=yolo&logoColor=black)
 
-🌐 **Live Demo:** [Hugging Face Space](https://huggingface.co/spaces/AbnormalCreation/interior-design-advisor)
+🌐 **Live Demos:**  
+- **Latest (v2):** [Interior Design Advisor v2](https://huggingface.co/spaces/AbnormalCreation/Interior_design_advisor_v2) *(with object detection & personalised tips)*  
+- **Original (v1):** [Interior Design Advisor](https://huggingface.co/spaces/AbnormalCreation/interior-design-advisor)
 
 ---
 
 ## 📋 Overview
 
-Interior Design Advisor (IDA) takes a photo of any room and instantly provides **personalized design insights**: a detected interior style (Modern, Minimalist, Rustic, Classic), a 5‑color palette extracted from the image, and tailored furniture, layout & lighting recommendations.
+Interior Design Advisor (IDA) takes a photo of any room and instantly provides **personalised design insights**:
 
-This repository documents the full project journey, from early prototyping and experimentation to the final deployed application.
+- 🎨 **5‑colour palette** (extracted with K‑Means)  
+- 🧠 **Style classification** (Modern, Minimalist, Rustic, Classic) with **confidence score**  
+- 🔍 **Object detection** (YOLOv8) – identifies furniture & items already in the room  
+- 💡 **Personalised advice** – tailored tips based on what was detected  
+- 👍 **User feedback** – thumbs‑up / thumbs‑down to improve the tool  
+
+All wrapped in an easy‑to‑use Gradio interface, **running live on Hugging Face Spaces** (free CPU).
 
 ---
 
@@ -37,144 +46,158 @@ This repository documents the full project journey, from early prototyping and e
 
 | Folder / File | Purpose |
 |---------------|---------|
-| `gradio-app/` | **Final submission**  the PyTorch + Gradio app deployed on Hugging Face |
-| `app/` and `notebooks/` | Early prototype  TensorFlow/Keras + Streamlit experiments |
+| `gradio-appv2/` | **Final enhanced app (v2)** – Gradio + YOLOv8 object detection, personalised tips, confidence, feedback, example image |
+| `gradio-app/` | First deployed app (v1) – Gradio with style classification & colour extraction |
+| `app/` and `notebooks/` | Early prototypes – TensorFlow/Keras + Streamlit experiments |
 | `docs/` | Architecture diagrams, SRS, design documents, weekly reports |
 | `diagrams/` | Editable architecture diagrams (component, deployment, ERD, etc.) |
-| `data/` | Sample images and instructions for obtaining the full dataset |
+| `data/` | Sample images and dataset instructions |
 | `src/` | Experimental helper functions (used during prototyping) |
 
-The **final, live version** lives in `gradio-app/`. The older code is preserved as a record of the experimentation phase.
+The **latest, most advanced version** is inside `gradio-appv2/`. Older versions are kept for reference.
 
 ---
 
-## 🔄 Project Evolution & Experiments
+## 🔄 Project Evolution
 
 ### 1. Initial Prototype (TensorFlow / Streamlit)
-- **Framework:** TensorFlow / Keras, Streamlit
-- **Model:** MobileNetV2 (pretrained on ImageNet), fine‑tuned on a custom dataset
-- **Classes:** Originally 5 styles (Modern, Minimalist, Industrial, Bohemian, Rustic)
-- **Deployment:** Local Streamlit app (`app/ida_app.py`)
-- **Why we moved away:**
-  - PyTorch offered easier export and Hugging Face integration
-  - The 5‑class model struggled with Industrial and Bohemian due to limited data
-  - Streamlit required more server resources than Gradio on free hosting
+- **Framework:** TensorFlow / Keras, Streamlit  
+- **Model:** MobileNetV2 (pretrained on ImageNet), 5 styles  
+- **Why we moved:** Limited accuracy on rare styles, harder deployment, PyTorch better for Hugging Face
 
-### 2. Final Version (PyTorch / Gradio)
-- **Framework:** PyTorch, torchvision, Gradio
-- **Model:** MobileNetV2 with a custom classifier head → 4 classes
-- **Classes:** Modern, Minimalist, Rustic, Classic *(Industrial and Bohemian dropped due to low per‑class accuracy and data scarcity)*
-- **Training:** Performed in Google Colab with a T4 GPU; final validation accuracy ~72%
-- **Color Extraction:** K‑Means clustering (k=5) on pixel colors → HEX codes
-- **Deployment:** Hosted on Hugging Face Spaces with a Gradio interface (`gradio-app/app.py`)
+### 2. First Gradio Deployment (v1)
+- **Framework:** PyTorch, Gradio  
+- **Model:** MobileNetV2 (4 classes)  
+- **Features:** Colour palette, style classification, static recommendations  
+- **Limitations:** Advice was template‑based, no understanding of actual room contents  
+
+### 3. Enhanced Version (v2) – Current Final Submission
+- **Framework:** PyTorch, Gradio, **Ultralytics YOLOv8**  
+- **New Features:**
+  - Object detection (sofa, chair, bed, table, plant, TV, etc.)  
+  - Confidence score for style prediction  
+  - Personalised advice based on detected objects  
+  - “Try an Example” button for instant demo  
+  - User feedback collection (thumbs up/down)  
+- **Deployment:** [Hugging Face Space v2](https://huggingface.co/spaces/AbnormalCreation/Interior_design_advisor_v2)  
+- **Result:** The app now **truly analyses the room** rather than returning generic suggestions.
 
 ---
 
 ## 🧪 Dataset & Training Details
 
-- **Source:** Publicly available interior design images (Kaggle, Unsplash), manually cleaned and labelled
-- **Size:** ~3,000 images (after cleaning), split 80/10/10
-- **Augmentations:** Random horizontal flip, rotation (±15°), color jitter, random resized crop
-- **Preprocessing:** Resize to 224×224, normalize with ImageNet mean/std
-- **Training:** CrossEntropyLoss, Adam optimizer (lr=1e-4), batch size 32, early stopping
-- **Validation accuracy:** 72% (4‑class balanced accuracy ~70%)
+- **Source:** Publicly available interior design images (Kaggle, Unsplash), manually cleaned & labelled  
+- **Size:** ~3,000 images (80/10/10 split)  
+- **Augmentations:** Flip, rotation, colour jitter, random crop  
+- **Preprocessing:** Resize 224×224, ImageNet normalisation  
+- **Training:** CrossEntropyLoss, Adam (lr=1e-4), batch size 32, early stopping  
+- **Validation accuracy:** ~72% (4‑class)  
 
 **Why 72%?**  
-Interior style is subjective; rooms often mix styles. Limited dataset size and label noise prevented higher accuracy, but the model reliably distinguishes the four core styles for clearly‑styled rooms.
+Interior style is subjective; rooms often mix styles. Dataset size and label noise limited further gains, but the model reliably separates the four core styles.
 
 ---
 
-## ⚙️ How to Run Locally (Final App)
+## ⚙️ How to Run Locally (v2 Enhanced App)
 
 1. Clone the repo:
    ```bash
    git clone https://github.com/Badarmunir1/capstone-2025.git
-   cd capstone-2025/gradio-app
-
+   cd capstone-2025/gradio-appv2
+   ```
 2. Install dependencies:
+   ```bash
    pip install -r requirements.txt
-
+   ```
 3. Run the app:
+   ```bash
    python app.py
-   
-4. Open the local URL (usually http://127.0.0.1:7860) in your browser.
+   ```
+4. Open `http://127.0.0.1:7860` in your browser.
 
-Key Strengths
-End‑to‑end working demo that runs reliably on free cloud resources
+---
 
-Modular code structure – Gradio app separate from training pipeline
+## 🧠 Key Strengths
 
-Transparent limitations are openly discussed (see below)
+- **Working live demo** on free cloud infrastructure (Hugging Face Spaces)  
+- **Object detection** turns a blind classifier into a room‑aware advisor  
+- **Confidence scores** add transparency and trust  
+- **Personalised tips** evolve beyond static templates  
+- **User feedback** loop built‑in for continual improvement  
+- **Comprehensive documentation** (SRS, SDS, architecture diagrams, reports)  
+- **Modular code** – separate apps for v1 and v2, easy to compare
 
-Comprehensive documentation – SRS, SDS, architecture diagrams, weekly reports
+---
 
-Easy setup via a single requirements.txt
+## 🚧 Limitations & Known Issues
 
-🚧 Limitations & Known Issues
-🔹 Static Recommendations
-The furniture/layout/lighting advice is currently template‑based and not yet personalised to the uploaded image’s contents. This is a planned improvement beyond the capstone timeline.
+### 🔹 Advice Still Partially Template‑Based
+Personalised tips are rule‑based; they react to detected objects but don’t generate fully novel advice. An LLM‑based approach is planned for the future.
 
-🔹 Limited Style Coverage
-Only four styles are supported. Adding more styles requires a broader and more balanced dataset.
+### 🔹 Limited Style Coverage
+Only four styles are currently supported. Expanding requires a larger, well‑balanced dataset.
 
-🔹 Model Accuracy
-Accuracy ~72% means the model will misclassify borderline or mixed‑style rooms. We mitigate this by displaying the detected style and acknowledging that ambiguous rooms may get a wrong – but still plausible – result.
+### 🔹 Model Accuracy
+~72% accuracy means borderline/mixed rooms can be misclassified. Confidence scores help indicate uncertainty.
 
-🔹 Pickle Security Warning in Hugging Face
-The file best_style_model.pth is a standard PyTorch serialized model. Hugging Face’s security scanner flags it because of pickle imports (which PyTorch uses internally). This file is entirely safe – it contains only our own trained weights. No arbitrary code execution will occur. The warning can be safely ignored.
+### 🔹 Pickle Security Warning (Hugging Face)
+`best_style_model.pth` is a standard PyTorch file. The platform’s pickle warning is safe to ignore – it contains only our trained weights.
 
-🔹 Resource Constraints
-Training: Limited to Google Colab’s free GPU hours; hyperparameter tuning was minimal.
+### 🔹 Resource Constraints
+- Training: limited to free Colab GPU hours  
+- Data: more professional labels would boost accuracy  
+- Hosting: free Spaces may sleep after inactivity (first load ~30 s)
 
-Data: A larger, professionally labelled dataset would significantly boost accuracy.
+---
 
-Hosting: Free Hugging Face Spaces may sleep after inactivity; first load may take ~30 seconds.
+## 🔮 Future Work
 
-🔮 Future Work
-Replace static recommendations with a LLM‑based generator that uses extracted room features (dominant colour, detected objects) to produce truly personalised advice.
+- Integrate an **LLM** to generate rich, fully personalised room descriptions  
+- Expand to 8–10 design styles  
+- Add **real‑time webcam** capture  
+- Connect to **furniture e‑commerce APIs** for direct product linking  
+- Optimise model for **edge deployment** (ONNX / TensorRT)
 
-Expand the style classifier to 8–10 styles, possibly using a hierarchical approach.
-
-Add object detection (YOLO / Faster R‑CNN) to identify furniture pieces and suggest swaps.
-
-Integrate a feedback loop (thumbs up/down) to continuously improve the model.
-
-Optimise model for edge deployment (ONNX / TensorRT) to run on low‑power devices.
+---
 
 ## 📄 Documentation
 
-- [SRS Document](docs/IDA_SRS.pdf)
-- [Design Document](docs/IDA_Design_Document.pdf)
-- [Proposal](docs/IDA_Proposal.pdf)
-- [Architecture Diagram](docs/IDA_Architecture_Diagram.pdf)
-- [Signed SRS](docs/IDA_SRS_Signed.pdf)
-- [Presentation](docs/IDA_Presentation.pdf)
-- [10 Week Report](docs/10_week_report.pdf)
+- [SRS Document](docs/IDA_SRS.pdf)  
+- [Design Document](docs/IDA_Design_Document.pdf)  
+- [Proposal](docs/IDA_Proposal.pdf)  
+- [Architecture Diagram](docs/IDA_Architecture_Diagram.pdf)  
+- [Signed SRS](docs/IDA_SRS_Signed.pdf)  
+- [Presentation](docs/IDA_Presentation.pdf)  
+- [10 Week Report](docs/10_week_report.pdf)  
 - [Weekly Report 24 Nov](docs/Weekly_Report_24_Nov.pdf)
 
 ## 🖼 Diagrams (Editable)
 
 View and edit in [draw.io](https://app.diagrams.net/):
 
-- [Component Diagram](diagrams/component.drawio)
-- [Deployment Diagram](diagrams/deployment.drawio)
-- [ERD](diagrams/erd.drawio)
-- [Package Diagram](diagrams/package.drawio)
-- [Physical Data Model](diagrams/physical%20data%20model.drawio)
-- [State Transition](diagrams/state%20transition.drawio)
+- [Component Diagram](diagrams/component.drawio)  
+- [Deployment Diagram](diagrams/deployment.drawio)  
+- [ERD](diagrams/erd.drawio)  
+- [Package Diagram](diagrams/package.drawio)  
+- [Physical Data Model](diagrams/physical%20data%20model.drawio)  
+- [State Transition](diagrams/state%20transition.drawio)  
 - [Subsystem Diagram](diagrams/Subsystem.drawio)
 
 ## 📎 Links
 
-- **Live App:** [Hugging Face Space](https://huggingface.co/spaces/AbnormalCreation/interior-design-advisor)
+- **Live App (v2):** [Interior Design Advisor v2](https://huggingface.co/spaces/AbnormalCreation/Interior_design_advisor_v2)  
+- **Original (v1):** [Interior Design Advisor](https://huggingface.co/spaces/AbnormalCreation/interior-design-advisor)  
 - **GitHub Repo:** [capstone-2025](https://github.com/Badarmunir1/capstone-2025)
 
-🏆 Acknowledgements
-Pre‑trained MobileNetV2 from PyTorch Image Models (TIMM) and TensorFlow/Keras
+---
 
-Hugging Face for free hosting
+## 🏆 Acknowledgements
 
-Open source libraries: Gradio, OpenCV, scikit‑learn, Pillow
+- Pre‑trained MobileNetV2 from PyTorch Image Models (TIMM) and TensorFlow/Keras  
+- YOLOv8 by Ultralytics  
+- Hugging Face for free hosting  
+- Open source libraries: Gradio, OpenCV, scikit‑learn, Pillow  
 
+---
 
-Capstone project submitted to the Department of Computer Science, University of Sargodha, in partial fulfilment of the requirements for the degree of Bachelor of Science in Computer Science (BSCS), Batch 2022–2026.
+*Capstone project submitted to the Department of Computer Science, University of Sargodha, in partial fulfilment of the requirements for the degree of Bachelor of Science in Computer Science (BSCS), Batch 2022–2026.*
