@@ -71,7 +71,7 @@ The **latest, most advanced version** is inside `gradio-appv2/`. Older versions 
 - **Features:** Colour palette, style classification, static recommendations  
 - **Limitations:** Advice was template‑based, no understanding of actual room contents  
 
-### 3. Enhanced Version (v2) – Current Final Submission
+### 3. Enhanced Version (v2) Current Final Submission
 - **Framework:** PyTorch, Gradio, **Ultralytics YOLOv8**  
 - **New Features:**
   - Object detection (sofa, chair, bed, table, plant, TV, etc.)  
@@ -125,7 +125,7 @@ Interior style is subjective; rooms often mix styles. Dataset size and label noi
 - **Personalised tips** evolve beyond static templates  
 - **User feedback** loop built‑in for continual improvement  
 - **Comprehensive documentation** (SRS, SDS, architecture diagrams, reports)  
-- **Modular code** – separate apps for v1 and v2, easy to compare
+- **Modular code** separate apps for v1 and v2, easy to compare
 
 ---
 
@@ -141,7 +141,7 @@ Only four styles are currently supported. Expanding requires a larger, well‑ba
 ~72% accuracy means borderline/mixed rooms can be misclassified. Confidence scores help indicate uncertainty.
 
 ### 🔹 Pickle Security Warning (Hugging Face)
-`best_style_model.pth` is a standard PyTorch file. The platform’s pickle warning is safe to ignore – it contains only our trained weights.
+`best_style_model.pth` is a standard PyTorch file. The platform’s pickle warning is safe to ignore, it contains only our trained weights.
 
 ### 🔹 Resource Constraints
 - Training: limited to free Colab GPU hours  
