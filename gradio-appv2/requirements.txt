@@ -1,0 +1,9 @@
+torch
+torchvision
+scikit-learn
+opencv-python
+Pillow
+numpy
+gradio
+ultralytics
+requests
