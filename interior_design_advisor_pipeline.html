@@ -1,0 +1,605 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans, sans-serif); }
+
+.section-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin: 0 0 8px 4px;
+}
+
+.card {
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 0.5px solid;
+  position: relative;
+}
+
+/* FILE CARDS */
+.file-card {
+  background: var(--color-background-primary);
+  border-color: var(--color-border-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.file-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 20px;
+  margin-bottom: 2px;
+  width: fit-content;
+}
+.file-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+.file-desc {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* PIPELINE BOX */
+.pipe-box {
+  border-radius: 10px;
+  padding: 10px 14px;
+  border: 0.5px solid;
+  flex: 1;
+  min-width: 0;
+}
+.pipe-title {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.pipe-sub {
+  font-size: 10px;
+  line-height: 1.4;
+  opacity: 0.75;
+}
+
+/* ARROW */
+.arrow-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+  margin: 2px 0;
+}
+.arrow-right {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+/* COLORS */
+.bg-purple-50 { background: #EEEDFE; border-color: #AFA9EC; }
+.bg-purple-100 { background: #CECBF6; border-color: #7F77DD; }
+.text-purple { color: #3C3489; }
+.badge-purple { background: #CECBF6; color: #3C3489; }
+
+.bg-teal-50 { background: #E1F5EE; border-color: #5DCAA5; }
+.bg-teal-100 { background: #9FE1CB; border-color: #1D9E75; }
+.text-teal { color: #0F6E56; }
+.badge-teal { background: #9FE1CB; color: #085041; }
+
+.bg-coral-50 { background: #FAECE7; border-color: #F0997B; }
+.bg-coral-100 { background: #F5C4B3; border-color: #D85A30; }
+.text-coral { color: #993C1D; }
+.badge-coral { background: #F5C4B3; color: #993C1D; }
+
+.bg-amber-50 { background: #FAEEDA; border-color: #EF9F27; }
+.bg-amber-100 { background: #FAC775; border-color: #BA7517; }
+.text-amber { color: #854F0B; }
+.badge-amber { background: #FAC775; color: #854F0B; }
+
+.bg-blue-50 { background: #E6F1FB; border-color: #85B7EB; }
+.bg-blue-100 { background: #B5D4F4; border-color: #378ADD; }
+.text-blue { color: #0C447C; }
+.badge-blue { background: #B5D4F4; color: #0C447C; }
+
+.bg-green-50 { background: #EAF3DE; border-color: #97C459; }
+.text-green { color: #3B6D11; }
+.badge-green { background: #C0DD97; color: #27500A; }
+
+.bg-pink-50 { background: #FBEAF0; border-color: #ED93B1; }
+.text-pink { color: #993556; }
+.badge-pink { background: #F4C0D1; color: #72243E; }
+
+.bg-gray-50 { background: #F1EFE8; border-color: #B4B2A9; }
+.text-gray { color: #444441; }
+.badge-gray { background: #D3D1C7; color: #2C2C2A; }
+
+.section-block {
+  border-radius: 14px;
+  padding: 14px;
+  border: 1.5px dashed;
+  margin-bottom: 14px;
+}
+
+.big-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: 4px;
+}
+.big-sub {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.row { display: flex; gap: 8px; align-items: stretch; }
+.col { display: flex; flex-direction: column; gap: 8px; }
+
+.step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.output-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin: 2px 3px 2px 0;
+}
+
+.legend-dot {
+  width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 5px;
+}
+</style>
+
+<div style="padding: 16px 12px 24px;">
+
+  <!-- HEADER -->
+  <div class="big-title">Interior Design Advisor v2</div>
+  <div class="big-sub">Complete project pipeline</div>
+
+  <!-- LEGEND -->
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 20px;">
+    <span style="display:flex;align-items:center;font-size:11px;color:var(--color-text-secondary)"><span class="legend-dot" style="background:#7F77DD"></span>AI Models</span>
+    <span style="display:flex;align-items:center;font-size:11px;color:var(--color-text-secondary)"><span class="legend-dot" style="background:#1D9E75"></span>Processing</span>
+    <span style="display:flex;align-items:center;font-size:11px;color:var(--color-text-secondary)"><span class="legend-dot" style="background:#D85A30"></span>Data/Files</span>
+    <span style="display:flex;align-items:center;font-size:11px;color:var(--color-text-secondary)"><span class="legend-dot" style="background:#378ADD"></span>Output/UI</span>
+    <span style="display:flex;align-items:center;font-size:11px;color:var(--color-text-secondary)"><span class="legend-dot" style="background:#BA7517"></span>Feedback</span>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 1: PROJECT FILES -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="section-title">Project Structure — 5 Files in the Repository</div>
+  <div class="section-block" style="border-color: #AFA9EC; background: #EEEDFE22;">
+    <div style="font-size: 12px; font-weight: 500; color: #3C3489; margin-bottom: 10px;">📁 HuggingFace Space: AbnormalCreation/Interior_design_advisor_v2</div>
+    <div class="row" style="flex-wrap: wrap; gap: 8px;">
+
+      <div class="card file-card" style="flex: 1; min-width: 110px; background: #EEEDFE; border-color: #7F77DD;">
+        <span class="file-badge badge-purple">PYTHON</span>
+        <div class="file-name text-purple">app.py</div>
+        <div class="file-desc">Main brain of the app. Contains ALL logic — models, functions, Gradio UI</div>
+        <div style="font-size: 10px; color: #534AB7; margin-top: 4px;">📦 11.6 KB</div>
+      </div>
+
+      <div class="card file-card" style="flex: 1; min-width: 110px; background: #FAECE7; border-color: #D85A30;">
+        <span class="file-badge badge-coral">MODEL</span>
+        <div class="file-name text-coral">best_style_model.pth</div>
+        <div class="file-desc">Pre-trained MobileNetV2 weights for detecting interior style (Classic, Modern, Minimalist, Rustic)</div>
+        <div style="font-size: 10px; color: #993C1D; margin-top: 4px;">📦 9.8 MB</div>
+      </div>
+
+      <div class="card file-card" style="flex: 1; min-width: 110px; background: #E1F5EE; border-color: #5DCAA5;">
+        <span class="file-badge badge-teal">TEXT</span>
+        <div class="file-name text-teal">requirements.txt</div>
+        <div class="file-desc">List of all Python libraries HuggingFace must install: torch, gradio, ultralytics, etc.</div>
+        <div style="font-size: 10px; color: #0F6E56; margin-top: 4px;">📦 85 Bytes</div>
+      </div>
+
+      <div class="card file-card" style="flex: 1; min-width: 110px; background: #FAEEDA; border-color: #EF9F27;">
+        <span class="file-badge badge-amber">IMAGE</span>
+        <div class="file-name text-amber">example.jpg</div>
+        <div class="file-desc">Sample room photo. Used when user clicks "Try an Example" button in the UI</div>
+        <div style="font-size: 10px; color: #854F0B; margin-top: 4px;">📦 816 KB</div>
+      </div>
+
+      <div class="card file-card" style="flex: 1; min-width: 110px; background: #F1EFE8; border-color: #B4B2A9;">
+        <span class="file-badge badge-gray">DOCS</span>
+        <div class="file-name text-gray">README.md</div>
+        <div class="file-desc">Project description shown on HuggingFace. Meta-tags, title, instructions for users</div>
+        <div style="font-size: 10px; color: #444441; margin-top: 4px;">📦 4.6 KB</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 2: AI MODELS -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="section-title">AI Models Used Inside app.py</div>
+  <div class="section-block" style="border-color: #7F77DD; background: #EEEDFE15;">
+    <div class="row" style="flex-wrap: wrap; gap: 10px;">
+
+      <div class="card" style="flex: 1; min-width: 170px; background: #EEEDFE; border-color: #7F77DD;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="step-num" style="background:#CECBF6; color:#3C3489;">M1</span>
+          <div class="file-name text-purple">MobileNetV2</div>
+        </div>
+        <div class="file-desc">Style Classifier — a lightweight deep learning model. Loads weights from best_style_model.pth. Classifies the room into 1 of 4 styles.</div>
+        <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px;">
+          <span class="output-pill badge-purple">Classic</span>
+          <span class="output-pill badge-purple">Minimalist</span>
+          <span class="output-pill badge-purple">Modern</span>
+          <span class="output-pill badge-purple">Rustic</span>
+        </div>
+        <div style="font-size: 10px; color: #534AB7; margin-top: 6px;">Input: 224×224 RGB image → Output: style + % confidence</div>
+      </div>
+
+      <div class="arrow-right">→</div>
+
+      <div class="card" style="flex: 1; min-width: 170px; background: #E1F5EE; border-color: #1D9E75;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="step-num" style="background:#9FE1CB; color:#085041;">M2</span>
+          <div class="file-name text-teal">YOLOv8 Nano</div>
+        </div>
+        <div class="file-desc">Object Detector — ultra-fast real-time detector from Ultralytics. Auto-downloads yolov8n.pt on first run. Finds furniture and household items.</div>
+        <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px;">
+          <span class="output-pill badge-teal">chair</span>
+          <span class="output-pill badge-teal">couch</span>
+          <span class="output-pill badge-teal">bed</span>
+          <span class="output-pill badge-teal">dining table</span>
+          <span class="output-pill badge-teal">tv</span>
+          <span class="output-pill badge-teal">+16 more</span>
+        </div>
+        <div style="font-size: 10px; color: #0F6E56; margin-top: 6px;">Input: original PIL image → Output: list of detected objects</div>
+      </div>
+
+      <div class="arrow-right">→</div>
+
+      <div class="card" style="flex: 1; min-width: 170px; background: #FAEEDA; border-color: #EF9F27;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="step-num" style="background:#FAC775; color:#633806;">M3</span>
+          <div class="file-name text-amber">KMeans Clustering</div>
+        </div>
+        <div class="file-desc">Color Palette Extractor — sklearn algorithm. Groups all pixels into 5 clusters. Finds dominant colors in the room photo.</div>
+        <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px;">
+          <span style="display:inline-block;width:16px;height:16px;border-radius:3px;background:#8B5E3C;vertical-align:middle;margin-right:3px;border:0.5px solid #ccc"></span>
+          <span style="display:inline-block;width:16px;height:16px;border-radius:3px;background:#E8D5A3;vertical-align:middle;margin-right:3px;border:0.5px solid #ccc"></span>
+          <span style="display:inline-block;width:16px;height:16px;border-radius:3px;background:#3A5F4C;vertical-align:middle;margin-right:3px;border:0.5px solid #ccc"></span>
+          <span style="display:inline-block;width:16px;height:16px;border-radius:3px;background:#C4A882;vertical-align:middle;margin-right:3px;border:0.5px solid #ccc"></span>
+          <span style="display:inline-block;width:16px;height:16px;border-radius:3px;background:#F2EBD5;vertical-align:middle;border:0.5px solid #ccc"></span>
+        </div>
+        <div style="font-size: 10px; color: #854F0B; margin-top: 6px;">Input: all image pixels → Output: 5 hex color codes</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 3: FULL PIPELINE FLOW -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="section-title">Full Pipeline — Step by Step (What Happens When User Clicks Analyze)</div>
+  <div class="section-block" style="border-color: #85B7EB; background: #E6F1FB15;">
+
+    <!-- STEP 1: USER INPUT -->
+    <div class="row" style="align-items: flex-start; gap: 8px; margin-bottom: 6px;">
+      <div class="step-num" style="background: #B5D4F4; color: #0C447C; margin-top: 2px;">1</div>
+      <div class="pipe-box bg-blue-50">
+        <div class="pipe-title text-blue">User uploads room photo</div>
+        <div class="pipe-sub">Gradio image widget accepts PNG/JPG upload. Or user clicks "Try an Example" which loads example.jpg from disk. Image stored as PIL (Python Image Library) object.</div>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+
+    <!-- STEP 2: process_image() called -->
+    <div class="row" style="align-items: flex-start; gap: 8px; margin-bottom: 6px;">
+      <div class="step-num" style="background: #B5D4F4; color: #0C447C; margin-top: 2px;">2</div>
+      <div class="pipe-box bg-blue-100" style="background:#B5D4F4; border-color: #378ADD;">
+        <div class="pipe-title text-blue">process_image(image) function is called</div>
+        <div class="pipe-sub">This is the MAIN controller function in app.py. It calls all 3 AI models, collects results, and builds the final HTML output. If no image → shows error message.</div>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+
+    <!-- THREE PARALLEL BRANCHES -->
+    <div style="font-size: 11px; color: var(--color-text-secondary); text-align: center; margin-bottom: 6px;">Three tasks run in sequence inside process_image()</div>
+    <div class="row" style="align-items: stretch; gap: 8px; margin-bottom: 6px;">
+
+      <!-- Branch A: Style -->
+      <div class="col" style="flex: 1;">
+        <div class="pipe-box bg-purple-50">
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;">
+            <span style="font-size:14px;">🎨</span>
+            <span class="pipe-title text-purple">predict_style()</span>
+          </div>
+          <div class="pipe-sub">Resizes image to 224×224. Normalizes pixels. Feeds into MobileNetV2. Gets softmax probabilities. Returns predicted style + confidence %.</div>
+        </div>
+        <div class="arrow-down" style="margin:3px 0;">↓</div>
+        <div class="pipe-box" style="background:#CECBF6; border-color:#7F77DD; flex:0;">
+          <div class="pipe-title text-purple">Output: "Rustic" at 87.4%</div>
+        </div>
+      </div>
+
+      <div class="arrow-right" style="align-self:center;">+</div>
+
+      <!-- Branch B: YOLO -->
+      <div class="col" style="flex: 1;">
+        <div class="pipe-box bg-teal-50">
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;">
+            <span style="font-size:14px;">🔍</span>
+            <span class="pipe-title text-teal">YOLOv8 detector()</span>
+          </div>
+          <div class="pipe-sub">Runs YOLOv8n on the image. Gets all bounding boxes with class labels. Filters only furniture from the FURNITURE_CLASSES list. Removes duplicates.</div>
+        </div>
+        <div class="arrow-down" style="margin:3px 0;">↓</div>
+        <div class="pipe-box" style="background:#9FE1CB; border-color:#1D9E75; flex:0;">
+          <div class="pipe-title text-teal">Output: ["couch", "tv", "potted plant"]</div>
+        </div>
+      </div>
+
+      <div class="arrow-right" style="align-self:center;">+</div>
+
+      <!-- Branch C: Colors -->
+      <div class="col" style="flex: 1;">
+        <div class="pipe-box bg-amber-50">
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;">
+            <span style="font-size:14px;">🖌️</span>
+            <span class="pipe-title text-amber">extract_palette()</span>
+          </div>
+          <div class="pipe-sub">Converts image to numpy array. Reshapes all pixels to a flat list. Runs KMeans(k=5) clustering. Converts cluster centers to hex codes.</div>
+        </div>
+        <div class="arrow-down" style="margin:3px 0;">↓</div>
+        <div class="pipe-box" style="background:#FAC775; border-color:#BA7517; flex:0;">
+          <div class="pipe-title text-amber">Output: ["#8B5E3C", "#E8D5A3", ...]</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="arrow-down">↓</div>
+
+    <!-- STEP 5: Advice Generator -->
+    <div class="row" style="align-items: flex-start; gap: 8px; margin-bottom: 6px;">
+      <div class="step-num" style="background: #9FE1CB; color: #085041; margin-top: 2px;">5</div>
+      <div class="pipe-box bg-teal-100" style="background:#9FE1CB; border-color:#1D9E75;">
+        <div class="pipe-title text-teal">generate_personalized_advice(detected_objects, style)</div>
+        <div class="pipe-sub">Smart rule-based advisor. Checks which furniture was detected → adds specific tips. Example: couch detected → "Add a textured throw and accent pillows for the rustic look." No furniture detected → fallback generic tip.</div>
+        <div style="margin-top:6px; display: flex; flex-wrap: wrap; gap:4px;">
+          <span class="output-pill badge-teal">🛋️ Seating tip</span>
+          <span class="output-pill badge-teal">📺 TV tip</span>
+          <span class="output-pill badge-teal">🌿 Plant tip</span>
+          <span class="output-pill badge-teal">💻 Workspace tip</span>
+        </div>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+
+    <!-- STEP 6: Recommendations lookup -->
+    <div class="row" style="align-items: flex-start; gap: 8px; margin-bottom: 6px;">
+      <div class="step-num" style="background: #FAC775; color: #633806; margin-top: 2px;">6</div>
+      <div class="pipe-box bg-amber-50">
+        <div class="pipe-title text-amber">recommendations[style] — Style Lookup Dictionary</div>
+        <div class="pipe-sub">Hard-coded dictionary in app.py. Looks up the detected style (e.g. "Rustic") and retrieves furniture suggestions, layout advice, and lighting tips. No AI needed — it's a simple Python dict!</div>
+        <div style="margin-top:6px; display: flex; flex-wrap: wrap; gap:4px;">
+          <span class="output-pill badge-amber">🛋️ Furniture advice</span>
+          <span class="output-pill badge-amber">📐 Layout advice</span>
+          <span class="output-pill badge-amber">💡 Lighting tips</span>
+        </div>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+
+    <!-- STEP 7: HTML Output -->
+    <div class="row" style="align-items: flex-start; gap: 8px; margin-bottom: 6px;">
+      <div class="step-num" style="background: #B5D4F4; color: #0C447C; margin-top: 2px;">7</div>
+      <div class="pipe-box bg-blue-50">
+        <div class="pipe-title text-blue">Build final html_output string</div>
+        <div class="pipe-sub">Combines ALL results into a single styled HTML string. Creates color swatches with hex codes. Creates furniture "badge" pills. Puts everything in a white card with box-shadow. Returns to Gradio to display.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 4: GRADIO UI -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="section-title">Gradio UI — What the User Sees (Section 9 of app.py)</div>
+  <div class="section-block" style="border-color: #378ADD; background: #E6F1FB20;">
+    <div class="row" style="flex-wrap: wrap; gap: 8px;">
+
+      <div class="card" style="flex: 1; min-width: 140px; background: #E6F1FB; border-color: #85B7EB;">
+        <div class="file-badge badge-blue" style="margin-bottom:5px;">LEFT COLUMN</div>
+        <div class="file-name text-blue" style="margin-bottom:4px;">Image Input</div>
+        <div class="file-desc">gr.Image widget — drag &amp; drop or click to upload. Also "Try an Example" button that loads example.jpg.</div>
+      </div>
+
+      <div class="arrow-right">→</div>
+
+      <div class="card" style="flex: 1; min-width: 100px; background: #E6F1FB; border-color: #378ADD;">
+        <div class="file-badge badge-blue" style="margin-bottom:5px;">BUTTON</div>
+        <div class="file-name text-blue" style="margin-bottom:4px;">Analyze Room</div>
+        <div class="file-desc">Triggers process_image(). Primary green button. Calls all 3 AI models.</div>
+      </div>
+
+      <div class="arrow-right">→</div>
+
+      <div class="card" style="flex: 1; min-width: 140px; background: #EAF3DE; border-color: #97C459;">
+        <div class="file-badge badge-green" style="margin-bottom:5px;">RIGHT COLUMN</div>
+        <div class="file-name text-green" style="margin-bottom:4px;">HTML Output</div>
+        <div class="file-desc">gr.HTML widget displays styled results: detected style, confidence %, color swatches, object badges, and all advice.</div>
+      </div>
+
+      <div class="arrow-right">→</div>
+
+      <div class="card" style="flex: 1; min-width: 120px; background: #FAEEDA; border-color: #EF9F27;">
+        <div class="file-badge badge-amber" style="margin-bottom:5px;">FEEDBACK</div>
+        <div class="file-name text-amber" style="margin-bottom:4px;">👍 / 👎 Buttons</div>
+        <div class="file-desc">Appears after analysis. User votes helpful/not. Saves to feedback.csv with timestamp and image name.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 5: DATA FLOW SUMMARY -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="section-title">Complete Data Flow — One Sentence Per Step</div>
+  <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px;">
+    
+    <div style="display:flex; align-items:flex-start; gap:8px; padding: 8px 12px; border-radius:8px; background: #E6F1FB; border: 0.5px solid #85B7EB;">
+      <span style="font-size:16px; flex-shrink:0;">📸</span>
+      <div style="font-size: 12px; color: #0C447C;"><strong>User</strong> uploads a room photo via the Gradio web interface running on HuggingFace Spaces.</div>
+    </div>
+    <div style="text-align:center;color:var(--color-text-secondary);font-size:14px;">↓</div>
+
+    <div style="display:flex; align-items:flex-start; gap:8px; padding: 8px 12px; border-radius:8px; background: #EEEDFE; border: 0.5px solid #AFA9EC;">
+      <span style="font-size:16px; flex-shrink:0;">🤖</span>
+      <div style="font-size: 12px; color: #3C3489;"><strong>MobileNetV2</strong> (loaded from best_style_model.pth) classifies the room style with a confidence percentage.</div>
+    </div>
+    <div style="text-align:center;color:var(--color-text-secondary);font-size:14px;">↓</div>
+
+    <div style="display:flex; align-items:flex-start; gap:8px; padding: 8px 12px; border-radius:8px; background: #E1F5EE; border: 0.5px solid #5DCAA5;">
+      <span style="font-size:16px; flex-shrink:0;">🔍</span>
+      <div style="font-size: 12px; color: #085041;"><strong>YOLOv8</strong> scans the same image and outputs a list of furniture/objects it can see.</div>
+    </div>
+    <div style="text-align:center;color:var(--color-text-secondary);font-size:14px;">↓</div>
+
+    <div style="display:flex; align-items:flex-start; gap:8px; padding: 8px 12px; border-radius:8px; background: #FAEEDA; border: 0.5px solid #EF9F27;">
+      <span style="font-size:16px; flex-shrink:0;">🎨</span>
+      <div style="font-size: 12px; color: #633806;"><strong>KMeans</strong> groups all pixels into 5 dominant colors and outputs their hex codes (e.g. #8B5E3C).</div>
+    </div>
+    <div style="text-align:center;color:var(--color-text-secondary);font-size:14px;">↓</div>
+
+    <div style="display:flex; align-items:flex-start; gap:8px; padding: 8px 12px; border-radius:8px; background: #E1F5EE; border: 0.5px solid #1D9E75;">
+      <span style="font-size:16px; flex-shrink:0;">💡</span>
+      <div style="font-size: 12px; color: #0F6E56;"><strong>generate_personalized_advice()</strong> reads the detected furniture list and generates specific actionable tips.</div>
+    </div>
+    <div style="text-align:center;color:var(--color-text-secondary);font-size:14px;">↓</div>
+
+    <div style="display:flex; align-items:flex-start; gap:8px; padding: 8px 12px; border-radius:8px; background: #FAEEDA; border: 0.5px solid #BA7517;">
+      <span style="font-size:16px; flex-shrink:0;">📋</span>
+      <div style="font-size: 12px; color: #854F0B;"><strong>recommendations dict</strong> looks up style-based furniture, layout, and lighting advice from a hard-coded dictionary.</div>
+    </div>
+    <div style="text-align:center;color:var(--color-text-secondary);font-size:14px;">↓</div>
+
+    <div style="display:flex; align-items:flex-start; gap:8px; padding: 8px 12px; border-radius:8px; background: #EAF3DE; border: 0.5px solid #97C459;">
+      <span style="font-size:16px; flex-shrink:0;">🖥️</span>
+      <div style="font-size: 12px; color: #27500A;"><strong>Gradio HTML widget</strong> renders the complete results card: style label, confidence, colored swatches, object badges, and all tips.</div>
+    </div>
+    <div style="text-align:center;color:var(--color-text-secondary);font-size:14px;">↓</div>
+
+    <div style="display:flex; align-items:flex-start; gap:8px; padding: 8px 12px; border-radius:8px; background: #FAEEDA; border: 0.5px solid #EF9F27;">
+      <span style="font-size:16px; flex-shrink:0;">📊</span>
+      <div style="font-size: 12px; color: #633806;"><strong>User votes</strong> 👍 or 👎 — the app saves their vote + image name + timestamp to <strong>feedback.csv</strong> for future improvements.</div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 6: LIBRARIES (requirements.txt) -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="section-title">Libraries from requirements.txt — What Each One Does</div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-bottom: 14px;">
+
+    <div class="card" style="background: #EEEDFE; border-color: #7F77DD;">
+      <div class="file-badge badge-purple" style="margin-bottom:4px;">torch</div>
+      <div class="file-desc text-purple">PyTorch — the deep learning engine. Runs MobileNetV2 on GPU or CPU.</div>
+    </div>
+    <div class="card" style="background: #EEEDFE; border-color: #AFA9EC;">
+      <div class="file-badge badge-purple" style="margin-bottom:4px;">torchvision</div>
+      <div class="file-desc text-purple">Adds MobileNetV2 model + image transform helpers (Resize, Normalize).</div>
+    </div>
+    <div class="card" style="background: #E1F5EE; border-color: #5DCAA5;">
+      <div class="file-badge badge-teal" style="margin-bottom:4px;">ultralytics</div>
+      <div class="file-desc text-teal">Contains YOLOv8. Used to detect objects in the room photo.</div>
+    </div>
+    <div class="card" style="background: #FAEEDA; border-color: #EF9F27;">
+      <div class="file-badge badge-amber" style="margin-bottom:4px;">scikit-learn</div>
+      <div class="file-desc text-amber">KMeans algorithm for color palette extraction from pixel data.</div>
+    </div>
+    <div class="card" style="background: #FAECE7; border-color: #D85A30;">
+      <div class="file-badge badge-coral" style="margin-bottom:4px;">Pillow</div>
+      <div class="file-desc text-coral">PIL image library. Opens, resizes, and converts images to RGB or numpy.</div>
+    </div>
+    <div class="card" style="background: #E6F1FB; border-color: #85B7EB;">
+      <div class="file-badge badge-blue" style="margin-bottom:4px;">numpy</div>
+      <div class="file-desc text-blue">Converts images to number arrays so KMeans can process pixels.</div>
+    </div>
+    <div class="card" style="background: #EAF3DE; border-color: #97C459;">
+      <div class="file-badge badge-green" style="margin-bottom:4px;">gradio</div>
+      <div class="file-desc text-green">The entire web interface! Buttons, image upload, HTML display — all Gradio.</div>
+    </div>
+    <div class="card" style="background: #FBEAF0; border-color: #ED93B1;">
+      <div class="file-badge badge-pink" style="margin-bottom:4px;">opencv-python</div>
+      <div class="file-desc text-pink">Image processing utility (imported by dependencies, supports image ops).</div>
+    </div>
+    <div class="card" style="background: #F1EFE8; border-color: #B4B2A9;">
+      <div class="file-badge badge-gray" style="margin-bottom:4px;">requests</div>
+      <div class="file-desc text-gray">HTTP library. Used internally by Gradio/HuggingFace infrastructure.</div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- SECTION 7: FUNCTIONS QUICK REF -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="section-title">All 7 Functions in app.py — Plain English</div>
+  <div style="display: flex; flex-direction: column; gap: 5px; margin-bottom: 8px;">
+
+    <div style="display:flex; gap:8px; padding: 7px 10px; border-radius:8px; border: 0.5px solid #AFA9EC; background: #EEEDFE;">
+      <span class="step-num" style="background:#CECBF6; color:#3C3489; flex-shrink:0;">1</span>
+      <div><span style="font-size:12px;font-weight:500;color:#3C3489;">predict_style(image)</span> <span style="font-size:11px;color:#534AB7;margin-left:6px;">— Feeds image into MobileNetV2, returns predicted style name + confidence</span></div>
+    </div>
+    <div style="display:flex; gap:8px; padding: 7px 10px; border-radius:8px; border: 0.5px solid #EF9F27; background: #FAEEDA;">
+      <span class="step-num" style="background:#FAC775; color:#633806; flex-shrink:0;">2</span>
+      <div><span style="font-size:12px;font-weight:500;color:#854F0B;">extract_palette(image, k=5)</span> <span style="font-size:11px;color:#854F0B;margin-left:6px;">— Runs KMeans on pixels, returns list of 5 hex color codes</span></div>
+    </div>
+    <div style="display:flex; gap:8px; padding: 7px 10px; border-radius:8px; border: 0.5px solid #5DCAA5; background: #E1F5EE;">
+      <span class="step-num" style="background:#9FE1CB; color:#085041; flex-shrink:0;">3</span>
+      <div><span style="font-size:12px;font-weight:500;color:#085041;">generate_personalized_advice(detected_objects, style)</span> <span style="font-size:11px;color:#0F6E56;margin-left:6px;">— Rule-based tips from YOLO detections</span></div>
+    </div>
+    <div style="display:flex; gap:8px; padding: 7px 10px; border-radius:8px; border: 0.5px solid #85B7EB; background: #E6F1FB;">
+      <span class="step-num" style="background:#B5D4F4; color:#0C447C; flex-shrink:0;">4</span>
+      <div><span style="font-size:12px;font-weight:500;color:#0C447C;">process_image(image)</span> <span style="font-size:11px;color:#185FA5;margin-left:6px;">— Master controller: calls all 3 models + builds the HTML output string</span></div>
+    </div>
+    <div style="display:flex; gap:8px; padding: 7px 10px; border-radius:8px; border: 0.5px solid #D85A30; background: #FAECE7;">
+      <span class="step-num" style="background:#F5C4B3; color:#712B13; flex-shrink:0;">5</span>
+      <div><span style="font-size:12px;font-weight:500;color:#993C1D;">log_feedback(vote, image_name)</span> <span style="font-size:11px;color:#993C1D;margin-left:6px;">— Appends thumbs up/down vote + timestamp to feedback.csv</span></div>
+    </div>
+    <div style="display:flex; gap:8px; padding: 7px 10px; border-radius:8px; border: 0.5px solid #97C459; background: #EAF3DE;">
+      <span class="step-num" style="background:#C0DD97; color:#27500A; flex-shrink:0;">6</span>
+      <div><span style="font-size:12px;font-weight:500;color:#3B6D11;">load_example()</span> <span style="font-size:11px;color:#3B6D11;margin-left:6px;">— Opens example.jpg from disk and returns it to the image input widget</span></div>
+    </div>
+    <div style="display:flex; gap:8px; padding: 7px 10px; border-radius:8px; border: 0.5px solid #ED93B1; background: #FBEAF0;">
+      <span class="step-num" style="background:#F4C0D1; color:#72243E; flex-shrink:0;">7</span>
+      <div><span style="font-size:12px;font-weight:500;color:#993556;">demo.launch()</span> <span style="font-size:11px;color:#72243E;margin-left:6px;">— Starts the Gradio web server and makes the app accessible in a browser</span></div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; font-size:11px; color: var(--color-text-secondary); margin-top:16px; padding-top:10px; border-top: 0.5px solid var(--color-border-tertiary);">
+    Interior Design Advisor v2 — Pipeline Map for Viva &amp; Evaluation
+  </div>
+
+</div>
